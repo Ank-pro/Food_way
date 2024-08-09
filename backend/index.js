@@ -2,6 +2,7 @@ const express = require('express');
 const dishes = require('../backend/routes/dishesRoutes');
 const registerUser = require('../backend/routes/userRoutes')
 const mongoose = require('mongoose')
+const cors = require('cors')
 
 mongoose.connect("mongodb://127.0.0.1:27017/test")
     .then(()=>console.log('Connected'))
@@ -9,6 +10,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/test")
 const app = express();
 const port = 3001;
 app.use(express.json())
+app.use(cors())
 
 app.use('/api',dishes)
 
